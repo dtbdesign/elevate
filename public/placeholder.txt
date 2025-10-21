@@ -1,0 +1,6 @@
+Place your images here:
+- img1.jpg (Store interior image 1)
+- img2.jpg (Store interior image 2)
+- img3.jpg (Store interior image 3)
+- og-image.jpg (Social media preview - 1200x630px)
+

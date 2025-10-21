@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Font: BBH Sans Hegarty */
+@font-face {
+  font-family: 'BBH Sans Hegarty';
+  src: url('/fonts/BBHSansHegarty-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bold variant - browsers will synthesize or use the same file */
+@font-face {
+  font-family: 'BBH Sans Hegarty';
+  src: url('/fonts/BBHSansHegarty-Regular.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Google Fonts: DM Sans */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(to bottom, #0a0a0a, #141414);
+  color: #ffffff;
+  overflow-x: hidden;
+  letter-spacing: -0.015em !important;
+}
+
+/* DM Sans styling - slightly tighter spacing */
+@layer utilities {
+  .font-inter {
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: -0.015em !important;
+  }
+  
+  /* BBH Sans Hegarty styling - bold synthesis */
+  .font-montserrat {
+    font-synthesis: weight style;
+  }
+}
+
+/* Headlines only - all caps with wider letter spacing */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Hex pattern background */
+.hex-pattern {
+  background-image: 
+    linear-gradient(30deg, #1e1e1e 12%, transparent 12.5%, transparent 87%, #1e1e1e 87.5%, #1e1e1e),
+    linear-gradient(150deg, #1e1e1e 12%, transparent 12.5%, transparent 87%, #1e1e1e 87.5%, #1e1e1e),
+    linear-gradient(30deg, #1e1e1e 12%, transparent 12.5%, transparent 87%, #1e1e1e 87.5%, #1e1e1e),
+    linear-gradient(150deg, #1e1e1e 12%, transparent 12.5%, transparent 87%, #1e1e1e 87.5%, #1e1e1e),
+    linear-gradient(60deg, #1e1e1e77 25%, transparent 25.5%, transparent 75%, #1e1e1e77 75%, #1e1e1e77),
+    linear-gradient(60deg, #1e1e1e77 25%, transparent 25.5%, transparent 75%, #1e1e1e77 75%, #1e1e1e77);
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  opacity: 0.15;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4aa2b6;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d8a9c;
+}
+
+/* Glow effect */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(74, 162, 182, 0.3);
+}
+
+.glow-cyan-strong {
+  box-shadow: 0 0 30px rgba(74, 162, 182, 0.6);
+}
+
+/* Parallax container */
+.parallax {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Button focus states for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #4aa2b6;
+  outline-offset: 2px;
+}
+
+/* Smooth image loading */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Selection color */
+::selection {
+  background: #4aa2b6;
+  color: #0a0a0a;
+}
+
+::-moz-selection {
+  background: #4aa2b6;
+  color: #0a0a0a;
+}
+
