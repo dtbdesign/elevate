@@ -247,28 +247,32 @@ const HeroSection = () => {
             }}
           >
             <motion.div
-              initial={{ opacity: 0, y: -20, rotateX: 0 }}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ 
                 opacity: 1, 
-                y: 0,
-                rotateX: -50,
-                filter: [
-                  'drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 50px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 75px rgba(255, 255, 255, 0.2))',
-                  'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.2)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.1))',
-                  'drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 50px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 75px rgba(255, 255, 255, 0.2))'
-                ]
+                y: 0
               }}
               transition={{ 
                 opacity: { duration: 1.2, delay: 0.3 },
-                y: { duration: 1.2, delay: 0.3 },
-                rotateX: { duration: 1.2, delay: 0.3 },
-                filter: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                y: { duration: 1.2, delay: 0.3 }
               }}
               style={{
-                transformStyle: 'preserve-3d'
+                transform: 'rotateX(-50deg)',
+                transformStyle: 'preserve-3d',
+                willChange: 'opacity',
+                backfaceVisibility: 'hidden',
+                filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.2))'
               }}
             >
-              <img src="/Hexagons Mobile.svg" alt="" className="w-full h-auto" />
+              <img 
+                src="/Hexagons Mobile.svg" 
+                alt="" 
+                className="w-full h-auto"
+                style={{
+                  transform: 'translateZ(0)',
+                  WebkitTransform: 'translateZ(0)'
+                }}
+              />
             </motion.div>
           </div>
 
