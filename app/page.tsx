@@ -242,33 +242,42 @@ const HeroSection = () => {
               width: '130%',
               marginLeft: '-15%',
               marginRight: '-15%',
-              marginTop: '-80px'
+              marginTop: '-80px',
+              perspective: '1000px',
+              perspectiveOrigin: 'center top'
             }}
           >
             <motion.div
-              initial={{ opacity: 0, y: -30, scale: 0.95 }}
+              initial={{ opacity: 0, y: -30, rotateX: 0 }}
               animate={{ 
                 opacity: 1, 
                 y: 0,
-                scale: 1,
-                filter: [
-                  'drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 50px rgba(255, 255, 255, 0.4))',
-                  'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.2))',
-                  'drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 50px rgba(255, 255, 255, 0.4))'
-                ]
+                rotateX: -45
               }}
               transition={{ 
                 opacity: { duration: 1.2, delay: 0.3 },
                 y: { duration: 1.2, delay: 0.3 },
-                scale: { duration: 1.2, delay: 0.3 },
-                filter: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                rotateX: { duration: 1.2, delay: 0.3, ease: "easeOut" }
               }}
               style={{
-                willChange: 'transform, opacity, filter',
-                transform: 'translate3d(0,0,0)'
+                transformStyle: 'preserve-3d',
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden',
+                willChange: 'transform, opacity',
+                transform: 'translate3d(0,0,0)',
+                filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))'
               }}
             >
-              <img src="/Hexagons Mobile.svg" alt="" className="w-full h-auto" style={{ display: 'block' }} />
+              <img 
+                src="/Hexagons Mobile.svg" 
+                alt="" 
+                className="w-full h-auto" 
+                style={{ 
+                  display: 'block',
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden'
+                }} 
+              />
             </motion.div>
           </div>
 
