@@ -138,27 +138,53 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden pb-4 bg-dark-bg/98 backdrop-blur-lg rounded-b-lg px-4 mt-2 shadow-lg border-t border-gray-800"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden fixed inset-0 bg-black z-50 flex flex-col"
+            style={{ top: 0, left: 0, right: 0, bottom: 0 }}
           >
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="block py-3 text-gray-300 hover:text-electric-cyan transition-colors duration-300 border-b border-gray-800/50"
-              >
-                {link.label}
+            {/* Header with close button */}
+            <div className="flex justify-between items-center p-4 border-b border-gray-800">
+              <a href="#home" className="font-montserrat text-xl font-bold flex items-center gap-2">
+                <span className="text-white">ELEVATE</span>
+                <img src="/Icon.png" alt="Elevate Icon" className="h-10 w-auto" />
+                <span className="text-electric-cyan">V&M</span>
               </a>
-            ))}
-            <a
-              href={`tel:${SITE_CONFIG.phoneRaw}`}
-              className="block mt-4 bg-electric-cyan text-dark-bg px-6 py-3 rounded-full font-semibold text-center hover:bg-white hover:scale-105 transition-all duration-300"
-            >
-              Call Now
-            </a>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-white text-3xl"
+              >
+                <FaTimes />
+              </button>
+            </div>
+
+            {/* Menu Items */}
+            <div className="flex-1 flex flex-col justify-center px-8 space-y-6">
+              {navLinks.map((link, index) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-3xl font-montserrat font-bold text-white hover:text-electric-cyan transition-colors duration-300 py-2 border-b border-gray-800/50"
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+              <motion.a
+                href={`tel:${SITE_CONFIG.phoneRaw}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="mt-8 bg-electric-cyan text-dark-bg px-8 py-4 rounded-full font-semibold text-lg text-center hover:bg-white transition-all duration-300 glow-cyan-strong"
+              >
+                Call Now
+              </motion.a>
+            </div>
           </motion.div>
         )}
       </div>
@@ -242,7 +268,7 @@ const HeroSection = () => {
               width: '130%',
               marginLeft: '-15%',
               marginRight: '-15%',
-              marginTop: '-80px',
+              marginTop: '-40px',
               perspective: '1000px',
               perspectiveOrigin: 'center top'
             }}
