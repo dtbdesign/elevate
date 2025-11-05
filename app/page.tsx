@@ -242,37 +242,33 @@ const HeroSection = () => {
               width: '130%',
               marginLeft: '-15%',
               marginRight: '-15%',
-              marginTop: '-80px',
-              perspective: '800px'
+              marginTop: '-80px'
             }}
           >
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -30, scale: 0.95 }}
               animate={{ 
                 opacity: 1, 
-                y: 0
+                y: 0,
+                scale: 1,
+                filter: [
+                  'drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 50px rgba(255, 255, 255, 0.4))',
+                  'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.2))',
+                  'drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 50px rgba(255, 255, 255, 0.4))'
+                ]
               }}
               transition={{ 
                 opacity: { duration: 1.2, delay: 0.3 },
-                y: { duration: 1.2, delay: 0.3 }
+                y: { duration: 1.2, delay: 0.3 },
+                scale: { duration: 1.2, delay: 0.3 },
+                filter: { duration: 4, repeat: Infinity, ease: "easeInOut" }
               }}
               style={{
-                transform: 'rotateX(-50deg)',
-                transformStyle: 'preserve-3d',
-                willChange: 'opacity',
-                backfaceVisibility: 'hidden',
-                filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.2))'
+                willChange: 'transform, opacity, filter',
+                transform: 'translate3d(0,0,0)'
               }}
             >
-              <img 
-                src="/Hexagons Mobile.svg" 
-                alt="" 
-                className="w-full h-auto"
-                style={{
-                  transform: 'translateZ(0)',
-                  WebkitTransform: 'translateZ(0)'
-                }}
-              />
+              <img src="/Hexagons Mobile.svg" alt="" className="w-full h-auto" style={{ display: 'block' }} />
             </motion.div>
           </div>
 
@@ -636,7 +632,7 @@ const Footer = () => {
 
 export default function Home() {
   return (
-    <main className="bg-dark-gradient min-h-screen">
+    <main className="bg-dark-gradient min-h-screen overflow-x-hidden w-full">
       <Navbar />
       <HeroSection />
       <GallerySection />
