@@ -193,3 +193,34 @@ img {
   color: #0a0a0a;
 }
 
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Touch improvements for mobile */
+@media (hover: none) and (pointer: coarse) {
+  a, button {
+    -webkit-tap-highlight-color: rgba(74, 162, 182, 0.3);
+  }
+  
+  .glass-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Performance optimizations */
+.glass-card,
+.hex-pattern {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
