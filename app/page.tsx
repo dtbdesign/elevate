@@ -37,6 +37,12 @@ const SITE_CONFIG = {
   ],
   testimonials: [
     {
+      name: 'TheRealBell TV',
+      date: '12/16/2025',
+      rating: 5,
+      text: 'They were super nice and it was clean in there they got everything you need! I loved the customer service fr 🤗'
+    },
+    {
       name: 'Ronald Turner',
       date: '12/02/2025',
       rating: 5,
@@ -67,7 +73,7 @@ const SITE_CONFIG = {
       text: 'Great place super nice inside and friendly staff💕💕'
     }
   ],
-  googleReviewsUrl: 'https://www.google.com/maps/place/Elevate+Vape+%26+Market/data=!4m2!3m1!1s0x0:0x6a644c7c87aa284c?sa=X&ved=1t:2428&hl=en&ictx=111',
+  googleReviewsUrl: 'https://www.google.com/maps/place/Elevate+Vape+%26+Market/@36.1685137,-86.8119678,1282m/data=!3m1!1e3!4m18!1m9!3m8!1s0x886467291fdee82d:0x6a644c7c87aa284c!2sElevate+Vape+%26+Market!8m2!3d36.1685137!4d-86.8119678!9m1!1b1!16s%2Fg%2F11yjt6vxbf!3m7!1s0x886467291fdee82d:0x6a644c7c87aa284c!8m2!3d36.1685137!4d-86.8119678!9m1!1b1!16s%2Fg%2F11yjt6vxbf?hl=en&entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D',
   faqs: [
     {
       question: 'Can I find popular vape brands at your store?',
@@ -506,9 +512,12 @@ const TestimonialsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {SITE_CONFIG.testimonials.map((testimonial, index) => (
-            <div
+            <a
               key={index}
-              className="glass-card p-6 sm:p-7 rounded-xl sm:rounded-2xl hover:border-electric-cyan hover:shadow-2xl hover:shadow-electric-cyan/20 hover:-translate-y-2 transition-all duration-300 active:scale-95 flex flex-col h-full min-h-[300px] relative overflow-hidden group"
+              href={SITE_CONFIG.googleReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-card p-6 sm:p-7 rounded-xl sm:rounded-2xl hover:border-electric-cyan hover:shadow-2xl hover:shadow-electric-cyan/20 hover:-translate-y-2 transition-all duration-300 active:scale-95 flex flex-col h-full min-h-[300px] relative overflow-hidden group cursor-pointer block"
             >
               {/* Decorative gradient overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-electric-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -540,17 +549,12 @@ const TestimonialsSection = () => {
                 </div>
                 
                 {/* Google Link */}
-                <a
-                  href={SITE_CONFIG.googleReviewsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-gray-400 hover:text-electric-cyan transition-colors duration-300 mt-auto pt-2 border-t border-gray-700/30"
-                >
+                <div className="flex items-center gap-2 text-sm text-gray-400 group-hover:text-electric-cyan transition-colors duration-300 mt-auto pt-2 border-t border-gray-700/30">
                   <FaGoogle className="text-base" />
                   <span className="font-inter">Submitted on Google</span>
-                </a>
+                </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
