@@ -133,8 +133,8 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-dark-bg/95 backdrop-blur-lg shadow-lg' : 'bg-transparent md:bg-dark-bg'
+      className={`relative md:fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-dark-bg/95 backdrop-blur-lg shadow-lg' : 'bg-dark-bg md:bg-dark-bg'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -384,7 +384,7 @@ const HeroSection = () => {
 
 const GallerySection = () => {
   return (
-    <section id="gallery" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative scroll-mt-20">
+    <section id="gallery" className="hidden md:block py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <h2 className="font-montserrat text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
@@ -510,7 +510,59 @@ const TestimonialsSection = () => {
           <div className="w-20 sm:w-24 h-1 bg-electric-cyan mx-auto" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        {/* Mobile Horizontal Scroll */}
+        <div className="md:hidden overflow-x-auto pb-4 -mx-4 sm:-mx-6 px-4 sm:px-6 scrollbar-hide">
+          <div className="flex gap-4" style={{ width: 'max-content' }}>
+            {SITE_CONFIG.testimonials.map((testimonial, index) => (
+              <a
+                key={index}
+                href={SITE_CONFIG.googleReviewsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-card p-6 sm:p-7 rounded-xl sm:rounded-2xl hover:border-electric-cyan hover:shadow-2xl hover:shadow-electric-cyan/20 transition-all duration-300 active:scale-95 flex flex-col h-full min-h-[300px] w-[85vw] sm:w-[75vw] flex-shrink-0 relative overflow-hidden group cursor-pointer"
+              >
+                {/* Decorative gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-electric-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Rating Stars */}
+                  <div className="flex items-center gap-1.5 mb-5">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <FaStar key={i} className="text-electric-cyan text-lg drop-shadow-[0_0_8px_rgba(74,162,182,0.5)]" />
+                    ))}
+                  </div>
+                  
+                  {/* Quote Text */}
+                  <div className="mb-6 flex-grow">
+                    <p className="text-gray-200 font-inter text-base sm:text-lg leading-relaxed relative">
+                      <span className="text-electric-cyan text-3xl font-bold leading-none absolute -left-2 -top-2 opacity-20">"</span>
+                      <span className="relative z-10">{testimonial.text}</span>
+                    </p>
+                  </div>
+                  
+                  {/* Author Info */}
+                  <div className="border-t border-gray-700/50 pt-5 mb-4">
+                    <p className="font-montserrat font-bold text-white text-lg mb-1">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-gray-400 text-sm font-inter">
+                      {testimonial.date}
+                    </p>
+                  </div>
+                  
+                  {/* Google Link */}
+                  <div className="flex items-center gap-2 text-sm text-gray-400 group-hover:text-electric-cyan transition-colors duration-300 mt-auto pt-2 border-t border-gray-700/30">
+                    <FaGoogle className="text-base" />
+                    <span className="font-inter">Submitted on Google</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {SITE_CONFIG.testimonials.map((testimonial, index) => (
             <a
               key={index}
